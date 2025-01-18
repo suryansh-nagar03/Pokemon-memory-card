@@ -2,10 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import background from './assets/background.jpg'
-import Header from './components/header'  // changed from Header to header
+import Header from './components/header'  
 import Card from './components/card'
-// import Winner from './components/winner'
-// import Loser from './components/loser'
+import Winner from './components/winner'
+import Loser from './components/loser'
+import Rules from './components/rules'
 
 function App() {
   const [score,setScore] = useState(0);
@@ -15,6 +16,7 @@ function App() {
   const [reset,setReset] = useState(0);
   const [data,setData] = useState([]);
   const [numberOfPokemon,setNumberOfPokemon] = useState(5);
+  const [showRules,setShowRules] = useState(true);
 
   function updateScore(){
     setScore(score+1);
@@ -31,13 +33,13 @@ function App() {
       localStorage.setItem('highScore',score);
     }
     setScore(0);
+    setGameOver(false);
     if(hasWon){
       setHasWon(false);
       setNumberOfPokemon(numberOfPokemon+2);
-      setGameOver(false);
-      setData([]);
-      setReset(reset+1);
     }
+    setData([]);
+    setReset(reset+1);
   }
 
   function updateHighScore(){
@@ -67,6 +69,7 @@ function App() {
       setData={setData} 
       numberOfPokemon={numberOfPokemon}>
       </Card>
+      {showRules ? <Rules resetGame={()=>{setShowRules(false)}}/> : null}
       {hasWon ? <Winner score={score} resetGame={resetGame}/> : null}
       {gameOver ? <Loser score={score} resetGame={resetGame}/> : null}
     </div>
