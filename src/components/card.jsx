@@ -66,20 +66,20 @@ export default function Card({updateScore,updateHighScore,gameOver,changeGameOve
 
     if(!fetched){
         return(
-            <div className='flex justify-center items-center h-screen'>
-                <div>The game is loading...</div>
-                <img src={loadingImg} alt="loading" className='w-20 h-20'/>
+            <div className='flex flex-col justify-center items-center pt-12 gap-4'>
+            <div className='text-1xl font-semibold font-pixel'>The game is loading...</div>
+            <img src={loadingImg} alt="loading" className='w-20 h-20 animate-spin'/>
             </div>
         )
     }   
     return (
-        <div className='flex flex-wrap justify-center items-center gap-16'>
+        <div className='flex flex-wrap justify-center items-center gap-8 mt-20'>
         {pokemonData.map((pokemon)=>{
-            return(
-                <div key={pokemon.id} id={pokemon.id} className='flex justify-center items-center bg-white m-2 p-2 w-32 h-32 rounded-lg shadow-md cursor-pointer'
+            return( 
+                <div key={pokemon.id} id={pokemon.id} className='flex flex-col justify-center items-center bg-gray-600/35 m-2 p-2 w-44 h-52 rounded-lg shadow-md cursor-pointer contain-content hover:bg-gray-800/50 transition-colors'
                 onClick={(e)=>{handleClick(e)}}>
                     <img src={pokemon.image} alt={pokemon.name} className='w-20 h-20'/>
-                    <div className='text-center'>{pokemon.name}</div>   
+                    <div className='text-center font-pixel text-sm p-5'>{pokemon.name}</div>   
                 </div>
             )
         })}
