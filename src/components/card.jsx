@@ -88,7 +88,7 @@ export default function Card({
     );
   }
   return (
-    <div className="flex flex-wrap justify-center items-center sm:mt-10 gap-4 sm:gap-6 md:gap-8 md:mt-20">
+    <div className="flex flex-wrap justify-center items-center mt-6 mb-6 sm:mt-10 sm:mb-10 gap-4 sm:gap-6 md:gap-8 md:mt-20">
       {pokemonData.map((pokemon) => {
         return (
           <div
